@@ -1,0 +1,27 @@
+<div>
+    <div><h2>Name : {{name}}</h2></div>
+    <div><h2>Age: {{age}}</h2></div>
+    <div><h2>Email :{{email}}</h2></div>
+    <div><h2>Designation: {{job}}</h2></div>
+
+    <div *ngIf="age >=18">
+        <h3> eligible to vote</h3>
+    </div>
+
+    <div [ngSwitch]="job">
+    <div *ngSwitchCase="'Manager'">lead</div>
+    <div *ngSwitchCase="'developer'">develops a project</div>
+    </div>
+  
+    <div>
+        <input type="button" value="change" (click)="changeIn()"/>
+    </div>
+
+    <div *ngFor="let hobby of hobbies">
+        <li> {{hobby}}</li>
+        </div>
+
+
+
+   
+</div>

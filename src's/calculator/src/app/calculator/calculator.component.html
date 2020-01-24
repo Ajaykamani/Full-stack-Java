@@ -1,0 +1,17 @@
+<div>
+
+<b>Value:1</b><input type="number" #v1><br><br>
+<b>Value:2</b><input type="number" #v2><br><br>
+&nbsp;&nbsp;
+<input type="button" value="+"   (click)="add(v1,v2)"/>
+<input type="button" value="-"   (click)="sub(v1,v2)"/>
+<input type="button" value="*"   (click)="mul(v1,v2)"/>
+<input type="button" value="/"    (click)="div(v1,v2)"/>
+<input type="reset" value="reset"  (click)="reset(v1,v2)"><br><br>
+
+<b>Result:</b> <input type="number"  readonly><br><br>
+<h2 #s1>value : {{result}}</h2> 
+
+
+</div>
+
