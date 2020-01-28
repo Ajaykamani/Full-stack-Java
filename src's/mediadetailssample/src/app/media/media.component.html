@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col"><label for="">Image name</label></div>
+    <div class="col"><input type="text" #txtfile /></div>
+  </div>
+  <div class="row">
+    <div class="col"><label for="">Title</label></div>
+    <div class="col"><input type="text" #txttitle /></div>
+  </div>
+  <div class="row">
+    <div class="col"><label for="">Category</label></div>
+    <div class="col"><input type="text" #txtCategory /></div>
+  </div>
+  <div class="row">
+    <div class="col"><label for="">Description</label></div>
+    <div class="col"><input type="text" #txtdesc /></div>
+  </div>
+  <div class="row">
+    <div class="col"><label for="">Tags</label></div>
+    <div class="col"><input type="text" #txttags /></div>
+  </div>
+  
+
+  <div class="row">
+    
+    <div class="col"><input type="button" value="Save" (click)="saveMediaDetails(txtfile,txttitle,txtCategory,txtdesc,txttags)"/>
+    </div>
+
+<hr/>
+<medialist [medialist]="mediafile"></medialist>
