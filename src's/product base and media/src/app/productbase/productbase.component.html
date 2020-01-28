@@ -1,0 +1,26 @@
+<div>
+
+    <form>
+
+    </form>
+    <table>
+        <thead>
+            <th>sn</th>
+            <th>NAME</th>
+            <th>CATEGORY</th>
+            <th>COST</th>
+
+        </thead>
+        <tbody>
+<tr *ngFor="let product of products; let i=index">
+    <td>{{i+1}}</td>
+    <td>{{product.name}}</td>
+    <td>{{product.category}}</td>
+    <td>{{product.cost}}</td>
+</tr>
+
+</tr>
+
+        </tbody>
+    </table>
+</div>
