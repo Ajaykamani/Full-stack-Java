@@ -1,0 +1,28 @@
+{
+  "product": [
+    {
+      "name": "frist",
+      "category": "Books",
+      "cost": 460,
+      "id": 1
+    },
+    {
+      "id": 3,
+      "name": "third",
+      "category": "games",
+      "cost": 400
+    },
+    {
+      "id": 4,
+      "name": "fourth",
+      "category": "music",
+      "cost": 200
+    },
+    {
+      "name": "stationary",
+      "category": "pens",
+      "cost": 400,
+      "id": 5
+    }
+  ]
+}
