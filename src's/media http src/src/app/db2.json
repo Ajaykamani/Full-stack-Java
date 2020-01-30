@@ -1,0 +1,26 @@
+{
+  "Media": [
+    {
+      "file": "image",
+      "title" :"my image",
+      "category": "tour",
+      "description": "architect1",
+      "tags": "sam"
+    },
+    {
+      "file": "image2",
+      "title" :"my image2",
+      "category": "tour2",
+      "description": "architect2",
+      "tags": "ram"
+    },
+    {
+      "file": "image3",
+      "title" :"my image3",
+      "category": "tour3",
+      "description":"architect3" ,
+      "tags": "siva"
+    }
+    
+  ]
+}

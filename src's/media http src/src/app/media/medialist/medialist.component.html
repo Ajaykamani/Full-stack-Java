@@ -1,0 +1,23 @@
+<div>
+    <input type="button" value="ADD"  class="btn btn-primary" (click)="add()"/>
+    <table class="table">
+        <thead>
+          <th>Filename</th>
+          <th>Title</th>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Tags</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let mediadetail of medialist; let i = index">
+            
+            <td>{{mediadetail.file}}</td>
+            <td>{{mediadetail.title}}</td>
+            <td>{{mediadetail.category}}</td>
+            <td>{{mediadetail.description}}</td>
+            <td>{{mediadetail.tags}}</td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
