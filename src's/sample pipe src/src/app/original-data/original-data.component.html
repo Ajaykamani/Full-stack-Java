@@ -1,0 +1,12 @@
+<!--<div class="mx-4 my-4">
+    <input type="text" #txtinput />
+</div>
+<div class="mx-4 my-4">
+<input type="button" value="click"  (click)="checkData(txtinput)">
+</div>-->
+
+<div class="mx-4 my-4">
+    
+   <h1 *ngIf="value!=0"style="font-style: italic;color: red;">{{txt | originaldata}}</h1> 
+   <h1 *ngIf="value==0"style="font-style: italic;color: red;">{{txt | originaldata}}</h1> 
+</div>
