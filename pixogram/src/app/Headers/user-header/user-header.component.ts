@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserAuthService } from 'src/app/services/authentication/user-auth.service';
 
 @Component({
   selector: 'user-header',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public auth:UserAuthService) { }
 
   ngOnInit() {
   }

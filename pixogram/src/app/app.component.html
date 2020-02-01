@@ -1,9 +1,14 @@
+<div class="col-md-4 mi-2" *ngIf="!auth.isUserLoggedIn()">
+    <img src="assets/Images/Logo.png" class="img-responsive" alt="Logo" width="100px" height="auto">
+</div>
 
-
+<div *ngIf="auth.isUserLoggedIn()">
 <app-header> </app-header>
-<user-header> </user-header>
 
-<login></login>
+<user-header > </user-header>
+</div>
+
+
 
 
 <router-outlet></router-outlet>

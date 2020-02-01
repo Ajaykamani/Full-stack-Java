@@ -10,4 +10,29 @@ export class UserAuthService {
     
 
   }
+  authenticate(userid : string, password : string): boolean{
+    if(userid === "pixogram@mail.com" && password === "abc"){
+     
+      sessionStorage.setItem("user", userid);
+      return true;
+    }else{
+      
+      return false;
+    }
+  }
+
+ 
+  isUserLoggedIn(): boolean{
+    
+    let user = sessionStorage.getItem('user');
+    if(user == null)
+      return false;
+    return true;  
+  }
+  getUserDetails():string{
+    let user = sessionStorage.getItem('user');
+    return user;
+
 }
+}
+
