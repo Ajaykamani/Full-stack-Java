@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 public class Actions {
 	
 	@Id
@@ -19,7 +22,10 @@ public class Actions {
 	private Integer mediaId;
 	
 	@Column
+	@CreationTimestamp
+	
 	private LocalDateTime createdOn;
+	@Column
 	private Boolean status;
 	
 

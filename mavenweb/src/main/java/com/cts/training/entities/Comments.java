@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 public class Comments {
   
 	@Id
@@ -17,7 +19,7 @@ public class Comments {
 	
 	@Column
 	private Integer mediaId;
-	
+	@CreationTimestamp
 	@Column
 	private LocalDateTime createdOn;
 	@Column

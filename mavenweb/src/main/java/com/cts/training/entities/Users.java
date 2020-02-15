@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 public class Users {
 
 public Users() {
@@ -45,7 +48,9 @@ private String lastName;
 @Column
 private LocalDate dob;
 @Column
+@CreationTimestamp
 private LocalDateTime createdOn;
+@UpdateTimestamp
 @Column
 private LocalDateTime updatedOn;
 @Column
