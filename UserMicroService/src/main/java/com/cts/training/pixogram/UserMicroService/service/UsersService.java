@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import com.cts.training.pixogram.UserMicroService.entities.Users;
+import com.cts.training.pixogram.UserMicroService.model.RegisterModel;
 
 
 
@@ -15,7 +16,11 @@ public interface UsersService {
 	boolean updateUsers(Users user);
 	boolean deleteUsers(Integer id);
 
-	Users findUsersById(Integer userId);
+	public Users findUsersById(Integer userId);
+
+	public void saveuser(RegisterModel registermodel);
+	
+	public void checkUserName(Users user);
 
 	
 	

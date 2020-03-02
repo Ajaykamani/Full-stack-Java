@@ -2,6 +2,8 @@ package com.cts.training.pixogram.UserMicroService.model;
 
 import java.time.LocalDate;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class UserModel {
 	
 private Integer id;
@@ -11,6 +13,7 @@ private String email;
 private String firstName;
 private String lastName;
 private LocalDate dob;
+
 
 
 public UserModel(String string, long currentTimeMillis) {

@@ -12,16 +12,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cts.training.pixogram.UserMicroService.entities.Users;
-
+import com.cts.training.pixogram.UserMicroService.exception.UserErrorResponse;
+import com.cts.training.pixogram.UserMicroService.exception.UserNotFoundException;
+import com.cts.training.pixogram.UserMicroService.service.StorageService;
 import com.cts.training.pixogram.UserMicroService.service.UsersService;
 
 
@@ -34,6 +38,9 @@ public class UsersController {
 	// dependency
 	@Autowired
 	private UsersService userservice;
+	
+	@Autowired
+	private StorageService storageService;
 	
 	// @RequestMapping(value =  "/students", method = {RequestMethod.GET, RequestMethod.PUT} )
 	@GetMapping("/users") // GET HTTP VERB
@@ -58,15 +65,29 @@ public class UsersController {
 		return response;
 	}
 	
-	// @RequestMapping(value =  "/students", method = RequestMethod.POST)
+	// @RequestMapping(value =  "/users", method = RequestMethod.POST)
 	@PostMapping("/users") // POST HTTP VERB
-	public ResponseEntity<Users> save(@RequestBody Users user) {
-		this.userservice.addUsers(user);
+	public ResponseEntity<Users> save(@RequestParam("file") MultipartFile file,
+										@RequestParam("Id") Long Id,@RequestParam("url") String url,@RequestParam("username") String username,@RequestParam("password") String password,
+										@RequestParam("repassword") String repassword,@RequestParam("email")String email){
+		
+		Users user=new Users(null, username,password,repassword,email,url, null, email, null, null, null);
+		
+		if(!this.userservice.addUsers(user))
+			throw new RuntimeException("Could not add new record!!!");
+		
+		// string file in static folder
+		this.storageService.store(file);
+		
+		logger.info("Media is uploaded successfully " + file.getOriginalFilename() + "!");
+		
+		
 		ResponseEntity<Users> response = 
 				new ResponseEntity<Users>(user, HttpStatus.OK);
 
 		return response;
 	}
+	
 	
 	@PutMapping("/users")
 	public ResponseEntity<Users> saveUpdate(@RequestBody Users user) {
@@ -77,6 +98,8 @@ public class UsersController {
 
 		return response;
 	}
+	
+	
 	
 	@DeleteMapping("/users/{userId}")
 	public ResponseEntity<Users> delete(@PathVariable Integer userId) {
@@ -89,6 +112,33 @@ public class UsersController {
 
 		return response;
 	}
+	
+	@ExceptionHandler  // ~catch
+	public ResponseEntity<UserErrorResponse> productNotFoundHandler(UserNotFoundException ex) {
+		// create error object
+		UserErrorResponse error = new UserErrorResponse(ex.getMessage(), 
+															  HttpStatus.NOT_FOUND.value(), 
+															  System.currentTimeMillis());
+		ResponseEntity<UserErrorResponse> response =
+										new ResponseEntity<UserErrorResponse>(error, HttpStatus.NOT_FOUND);
+		
+		return response;
+	}
+	
+	@ExceptionHandler  // ~catch
+	public ResponseEntity<UserErrorResponse> productOperationErrorHAndler(Exception ex) {
+		// create error object
+		UserErrorResponse error = new UserErrorResponse(ex.getMessage(), 
+															  HttpStatus.BAD_REQUEST.value(), 
+															  System.currentTimeMillis());
+		ResponseEntity<UserErrorResponse> response =
+										new ResponseEntity<UserErrorResponse>(error, HttpStatus.NOT_FOUND);
+		logger.error("Exception :" + error);
+		
+		return response;
+	}
+	
+	
 	
 }
 

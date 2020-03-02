@@ -45,6 +45,8 @@ private String lastname;
 @Column
 private LocalDate dob;
 @Column
+private String url;
+@Column
 @CreationTimestamp
 private LocalDateTime createdon;
 @UpdateTimestamp

@@ -22,16 +22,19 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Authorities implements Serializable {
+public class Authorities implements Serializable{
 	
 	
 
 	@Id
-	@Column(insertable = true,length = 100)
+	@Column(name="username",length = 100)
 	private String username;
 	@Id
-	@Column(insertable = true,length = 100)
+	@Column(name="authority",length = 100)
 	private String authority;
+	
+	
+	
 	
 
 }

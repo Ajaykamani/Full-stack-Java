@@ -6,9 +6,11 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.cts.training.pixogram.UserMicroService.entities.Authorities;
+
 @Repository
 @Transactional
-public class AuthoritiesRepoImpl implements Authorities{
+public class AuthoritiesRepoImpl implements AuthoritiesRepository{
 
 	@PersistenceContext
 	private EntityManager em;
@@ -17,7 +19,7 @@ public class AuthoritiesRepoImpl implements Authorities{
 	@Override
 	public void save(Authorities auth) {
 		// TODO Auto-generated method stub
-		this.em.merge(auth);
+		this.em.persist(auth);
 		
 	}
 
